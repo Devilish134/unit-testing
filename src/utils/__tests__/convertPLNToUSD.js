@@ -8,21 +8,37 @@ describe('ConvertPLNtoUSD', () => {
     expect(convertPLNToUSD(12)).toBe('$3.43');
   });
   it('should return NaN when input is text', () => {
-    expect(convertPLNToUSD('1')).toBeNaN();
-    expect(convertPLNToUSD('abc')).toBeNaN();
-    expect(convertPLNToUSD('six')).toBeNaN();
-    expect(convertPLNToUSD('-15')).toBeNaN();
+    expect(convertPLNToUSD('1')).toBe(
+      'Error, wrong format'
+    );
+    expect(convertPLNToUSD('abc')).toBe(
+      'Error, wrong format'
+    );
+    expect(convertPLNToUSD('six')).toBe(
+      'Error, wrong format'
+    );
+    expect(convertPLNToUSD('-15')).toBe(
+      'Error, wrong format'
+    );
   });
   it('should return NaN when input is empty', () => {
-    expect(convertPLNToUSD()).toBeNaN();
+    expect(convertPLNToUSD()).toBe(
+      'Error, wrong format'
+    );
   });
   it('should return Error when input is not string or number', () => {
-    expect(convertPLNToUSD({})).toBe('Error');
-    expect(convertPLNToUSD([])).toBe('Error');
-    expect(convertPLNToUSD(null)).toBe('Error');
+    expect(convertPLNToUSD({})).toBe(
+      'Error, wrong format'
+    );
+    expect(convertPLNToUSD([])).toBe(
+      'Error, wrong format'
+    );
+    expect(convertPLNToUSD(null)).toBe(
+      'Error, wrong format'
+    );
     expect(
       convertPLNToUSD(function () {})
-    ).toBe('Error');
+    ).toBe('Error, wrong format');
   });
   it('should return 0 when input is negative', () => {
     expect(convertPLNToUSD(-15)).toBe('$0.00');

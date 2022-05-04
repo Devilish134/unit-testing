@@ -5,38 +5,56 @@ import Button from './../Button/Button';
 import styles from './CurrencyForm.module.scss';
 
 const CurrencyForm = ({ action }) => {
-  const [amount, setAmount] = useState('');
+  const [amount, setAmount] = useState(0);
   const [from, setFrom] = useState('PLN');
-  const [to, setTo] = useState('PLN');
+  const [to, setTo] = useState('USD');
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-
-    action({ 
+    action({
       amount: parseInt(amount),
       from,
       to,
     });
-  }
+  };
 
   return (
-    <form onSubmit={handleSubmit} className={styles.form}>
+    <form
+      onSubmit={handleSubmit}
+      className={styles.form}
+    >
       <label>
         <span>Amount:</span>
-        <TextInput type="number" value={amount} onChange={e => setAmount(e.target.value)} />
+        <TextInput
+          type='number'
+          value={amount}
+          onChange={(e) =>
+            setAmount(e.target.value)
+          }
+        />
       </label>
       <label>
         <span>From</span>
-        <Select onChange={e => setFrom(e.target.value)}>
-          <option value="PLN">PLN</option>
-          <option value="USD">USD</option>
+        <Select
+          value={from}
+          onChange={(e) =>
+            setFrom(e.target.value)
+          }
+        >
+          <option value='PLN'>PLN</option>
+          <option value='USD'>USD</option>
         </Select>
       </label>
       <label>
         <span>To</span>
-        <Select onChange={e => setTo(e.target.value)}>
-          <option value="PLN">PLN</option>
-          <option value="USD">USD</option>
+        <Select
+          value={to}
+          onChange={(e) =>
+            setTo(e.target.value)
+          }
+        >
+          <option value='PLN'>PLN</option>
+          <option value='USD'>USD</option>
         </Select>
       </label>
       <Button>Convert</Button>
