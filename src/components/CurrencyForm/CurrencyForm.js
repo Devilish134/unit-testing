@@ -26,6 +26,7 @@ const CurrencyForm = ({ action }) => {
       <label>
         <span>Amount:</span>
         <TextInput
+          data-testid='amount'
           type='number'
           value={amount}
           onChange={(e) =>
@@ -36,6 +37,7 @@ const CurrencyForm = ({ action }) => {
       <label>
         <span>From</span>
         <Select
+          data-testid='from'
           value={from}
           onChange={(e) =>
             setFrom(e.target.value)
@@ -48,6 +50,7 @@ const CurrencyForm = ({ action }) => {
       <label>
         <span>To</span>
         <Select
+          data-testid='to'
           value={to}
           onChange={(e) =>
             setTo(e.target.value)
