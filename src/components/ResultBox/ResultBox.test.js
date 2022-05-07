@@ -7,7 +7,7 @@ import {
 import ResultBox from './ResultBox';
 
 describe('Component ResultBox', () => {
-  it('should render proper info about conversion when PLN -> USD', () => {
+  it('should render proper info about conversion', () => {
     const testCases = [
       {
         amount: 100,
@@ -44,6 +44,55 @@ describe('Component ResultBox', () => {
         from: 'USD',
         to: 'USD',
         result: '$35.00 = $35.00',
+      },
+    ];
+    for (const testObj of testCases) {
+      render(
+        <ResultBox
+          from={testObj.from}
+          to={testObj.to}
+          amount={testObj.amount}
+        />
+      );
+
+      //find div
+      const resultField =
+        screen.getByTestId('result');
+
+      //check if values are right
+      expect(resultField).toHaveTextContent(
+        testObj.result
+      );
+
+      cleanup();
+    }
+  });
+
+  it('should render Error wrong value in conversion', () => {
+    const testCases = [
+      {
+        amount: -100,
+        from: 'PLN',
+        to: 'USD',
+        result: 'Error, wrong value',
+      },
+      {
+        amount: -20,
+        from: 'USD',
+        to: 'PLN',
+        result: 'Error, wrong value',
+      },
+      {
+        amount: -200,
+        from: 'PLN',
+        to: 'USD',
+        result: 'Error, wrong value',
+      },
+      {
+        amount: -345,
+        from: 'USD',
+        to: 'PLN',
+        result: 'Error, wrong value',
       },
     ];
     for (const testObj of testCases) {

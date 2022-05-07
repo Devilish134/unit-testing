@@ -9,36 +9,36 @@ describe('ConvertPLNtoUSD', () => {
   });
   it('should return NaN when input is text', () => {
     expect(convertPLNToUSD('1')).toBe(
-      'Error, wrong format'
+      'Error, wrong value'
     );
     expect(convertPLNToUSD('abc')).toBe(
-      'Error, wrong format'
+      'Error, wrong value'
     );
     expect(convertPLNToUSD('six')).toBe(
-      'Error, wrong format'
+      'Error, wrong value'
     );
     expect(convertPLNToUSD('-15')).toBe(
-      'Error, wrong format'
+      'Error, wrong value'
     );
   });
   it('should return NaN when input is empty', () => {
     expect(convertPLNToUSD()).toBe(
-      'Error, wrong format'
+      'Error, wrong value'
     );
   });
   it('should return Error when input is not string or number', () => {
     expect(convertPLNToUSD({})).toBe(
-      'Error, wrong format'
+      'Error, wrong value'
     );
     expect(convertPLNToUSD([])).toBe(
-      'Error, wrong format'
+      'Error, wrong value'
     );
     expect(convertPLNToUSD(null)).toBe(
-      'Error, wrong format'
+      'Error, wrong value'
     );
     expect(
       convertPLNToUSD(function () {})
-    ).toBe('Error, wrong format');
+    ).toBe('Error, wrong value');
   });
   it('should return 0 when input is negative', () => {
     expect(convertPLNToUSD(-15)).toBe('$0.00');
